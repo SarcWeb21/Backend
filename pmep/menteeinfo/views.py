@@ -16,3 +16,4 @@ def register(request):
 		preference_1 = request.POST.get('preference_1')
 		preference_2 = request.POST.get('preference_2')
 		preference_3 = request.POST.get('preference_3')
+	return HttpResponse("This url works!!!")
