@@ -16,4 +16,10 @@ def register(request):
 		preference_1 = request.POST.get('preference_1')
 		preference_2 = request.POST.get('preference_2')
 		preference_3 = request.POST.get('preference_3')
+		mentee = Mentee(full_name = full_name, roll_no = roll_no,
+			department = department, graduation_year = graduation_year,
+			contact_number = contact_number, email_id = email_id,
+			preference_1 = preference_1, preference_2 = preference_2,
+			preference_3 = preference_3,)
+		mentee.save()
 	return HttpResponse("This url works!!!")
