@@ -12,3 +12,6 @@ class Mentee(models.Model):
 	preference_1 = models.CharField(max_length = 10)
 	preference_2 = models.CharField(max_length = 10)
 	preference_3 = models.CharField(max_length = 10)
+	preference_4 = models.CharField(max_length = 10)
+	preference_5 = models.CharField(max_length = 10)
+	SOP = models.TextField(default = '')
