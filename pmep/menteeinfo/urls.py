@@ -4,5 +4,6 @@ from menteeinfo import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('register', views.register, name = 'index')
+    path('register1', views.register1, name = 'register1'),
+    path('register2', views.register2, name = 'register2')
 ]
