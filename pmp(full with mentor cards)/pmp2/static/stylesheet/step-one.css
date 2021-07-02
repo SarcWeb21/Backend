@@ -1,0 +1,76 @@
+body{
+    margin:0px;
+    padding:0px;
+    background : #222629;
+    overflow-x: hidden;
+}
+
+.btn{
+    background-color: #87C240;
+}
+.navigationbar{
+    background-color: #87C240;
+}
+
+.form-label{
+    color: rgb(204, 196, 196);
+}
+
+.form-check-label{
+    color: rgb(204, 196, 196);
+}
+
+.logo1 img{
+    height:8vh;
+    width:12vw;
+    padding:0.5rem;
+}
+
+.navigationbar{
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigationbar li{
+    list-style: none;
+}
+.navigationbar li a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #222629;
+    font-size: 1.5rem;
+    padding:1rem;
+}
+
+.secondStep{
+    display:none;
+}
+
+.secondStep.active{
+    display:block;
+}
+
+.thirdStep{
+    display:none;
+}
+
+.thirdStep.active{
+    display:block;
+}
+
+.form-control:focus  {
+    border-color: #87C240;
+    box-shadow: 0 0 0 0.1rem rgba(135,194,64,0.75);
+}
+
+.form-select:focus {
+    border-color: #87C240;
+    box-shadow: 0 0 0 0.1rem rgba(135,194,64,0.75);
+}
+
+.form-check-label:before{
+  background-color:red;
+}
+.form-check .form-check-input:checked~.form-check-label::before{
+  background-color: #87C240;
+}
