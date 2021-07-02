@@ -21,4 +21,4 @@ def register(request):
 			preference_1 = preference_1, preference_2 = preference_2,
 			preference_3 = preference_3,)
 		mentee.save()
-	return HttpResponse("This url works!!!")
+	return render(request, "menteeinfo/register.html")
