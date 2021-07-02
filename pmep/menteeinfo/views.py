@@ -3,8 +3,7 @@ from django.http import HttpResponse
 from .models import Mentee
 # Create your views here.
 def index(request):
-	return HttpResponse('hi')
-
+	return render(request, 'menteeinfo/index.html')
 def register(request):
 	if request.method == 'POST':
 		full_name = request.POST.get('full_name')
