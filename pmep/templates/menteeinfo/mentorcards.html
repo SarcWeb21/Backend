@@ -1,7 +1,11 @@
-<h1>
-	Heyo
-</h1>
-<form action="register" class="preferences">
+<!-- {% for mentor in mentor_list %}
+<div>
+    <p>{{mentor.designation}}</p>
+</div>
+{% endfor %} -->
+<!-- temp mentor preference form -->
+<form action="register/" class="preferences" method="POST">
+    {% csrf_token %}
     <input name="preference_1" placeholder="P1">
     <input name="preference_2" placeholder="P2">
     <input name="preference_3" placeholder="P3">
