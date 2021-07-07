@@ -4,6 +4,26 @@ from .models import Mentee, Mentor, temp
 # Create your views here.
 def index(request):
 	return render(request, 'menteeinfo/index.html')
+
+#registration page
+def registrations(request):
+    corementors = Mentor.objects.filter(field="Core")
+	consultmentors = Mentor.objects.filter(field="Consultancy")
+	analyticmentors = Mentor.objects.filter(field="Analytics")
+	finmentors = Mentor.objects.filter(field="Finance")
+	csmentor = Mentor.objects.filter(field="IT/Software")
+	othermentors = Mentor.objects.filter(field="Other")
+    # allmentors_sorted = allmentors.order_by['gray_out']
+	context = {
+		'mentors_list_core': corementors, 
+		'mentors_list_consult': consultmentors,
+		'mentors_list_analysis': analyticmentors,
+		'mentors_list_fin': finmentors,
+		'mentors_list_cs': csmentor,
+		'mentors_list_other': othermentors
+		}
+    return render(request, 'menteeinfo/register.html')
+
 #Mentee registration
 def register(request):
 	if request.method == 'POST':
@@ -39,10 +59,31 @@ def register(request):
 	return render(request, "menteeinfo/register.html")
 
 #sorted mentor display
-def mentors(request):
-    allmentors = Mentor.objects.filter(field="Core")
-    # allmentors_sorted = allmentors.order_by['gray_out']
-    return render(request, 'menteeinfo/mentorcards.html', {'mentors_list': allmentors})
+# def corementors(request):
+#     allmentors = Mentor.objects.filter(field="Core")
+#     # allmentors_sorted = allmentors.order_by['gray_out']
+#     return render(request, 'menteeinfo/register.html', {'mentors_list_core': allmentors})
+
+# def analyticsmentors(request):
+#     allmentors = Mentor.objects.filter(field="Analytics")
+#     # allmentors_sorted = allmentors.order_by['gray_out']
+#     return render(request, 'menteeinfo/register.html', {'mentors_list_analytics': allmentors})
+
+# def financementors(request):
+#     allmentors = Mentor.objects.filter(field="Finance")
+#     # allmentors_sorted = allmentors.order_by['gray_out']
+#     return render(request, 'menteeinfo/register.html', {'mentors_list_finance': allmentors})
+
+# def csmentors(request):
+#     allmentors = Mentor.objects.filter(field="IT/Software")
+#     # allmentors_sorted = allmentors.order_by['gray_out']
+#     return render(request, 'menteeinfo/register.html', {'mentors_list_cs': allmentors})
+
+# def othermentors(request):
+#     allmentors = Mentor.objects.filter(field="Others")
+#     # allmentors_sorted = allmentors.order_by['gray_out']
+#     return render(request, 'menteeinfo/register.html', {'mentors_list_other': allmentors})
+
 
 #temporary
 # def trmpe(request):
