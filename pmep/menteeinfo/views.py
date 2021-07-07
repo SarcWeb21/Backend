@@ -40,18 +40,18 @@ def register(request):
 
 #sorted mentor display
 def mentors(request):
-    # allmentors = Mentor.objects.all()
+    allmentors = Mentor.objects.filter(field="Core")
     # allmentors_sorted = allmentors.order_by['gray_out']
-    return render(request, 'menteeinfo/mentorcards.html')
+    return render(request, 'menteeinfo/mentorcards.html', {'mentors_list': allmentors})
 
 #temporary
-def trmpe(request):
-	if request.method == 'POST':
-		preference_1 = request.POST.get('preference_1')
-		preference_2 = request.POST.get('preference_2')
-		preference_3 = request.POST.get('preference_3')
-		preference_4 = request.POST.get('preference_4')
-		preference_5 = request.POST.get('preference_5')
-		assign = temp(preference_1=preference_1, preference_2=preference_2, preference_3=preference_3, preference_4=preference_4, preference_5=preference_5)
-		assign.save()
-	return HttpResponse('Done')
+# def trmpe(request):
+# 	if request.method == 'POST':
+# 		preference_1 = request.POST.get('preference_1')
+# 		preference_2 = request.POST.get('preference_2')
+# 		preference_3 = request.POST.get('preference_3')
+# 		preference_4 = request.POST.get('preference_4')
+# 		preference_5 = request.POST.get('preference_5')
+# 		assign = temp(preference_1=preference_1, preference_2=preference_2, preference_3=preference_3, preference_4=preference_4, preference_5=preference_5)
+# 		assign.save()
+# 	return HttpResponse('Done')
