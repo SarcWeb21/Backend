@@ -9,12 +9,12 @@ class Mentee(models.Model):
 	graduation_year = models.CharField(max_length = 10, null=True)
 	contact_number = models.CharField(max_length = 12, null=True)
 	email_id = models.CharField(max_length = 255, null=True)
-	preference_1 = models.CharField(max_length = 10)
-	preference_2 = models.CharField(max_length = 10)
-	preference_3 = models.CharField(max_length = 10)
-	preference_4 = models.CharField(max_length = 10)
-	preference_5 = models.CharField(max_length = 10)
-	SOP = models.TextField(default = '')
+	preference_1 = models.CharField(max_length = 10, null=True)
+	preference_2 = models.CharField(max_length = 10, null=True)
+	preference_3 = models.CharField(max_length = 10, null=True)
+	preference_4 = models.CharField(max_length = 10, null=True)
+	preference_5 = models.CharField(max_length = 10, null=True)
+	SOP = models.TextField(null=True)
     
 #mentor data
 class Mentor(models.Model):

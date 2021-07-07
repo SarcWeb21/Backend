@@ -1,3 +1,4 @@
+
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Mentee, Mentor, temp
@@ -5,9 +6,9 @@ from .models import Mentee, Mentor, temp
 def index(request):
 	return render(request, 'menteeinfo/index.html')
 
-#registration page
-def registrations(request):
-    corementors = Mentor.objects.filter(field="Core")
+#Mentee registration
+def register(request):
+	corementors = Mentor.objects.filter(field="Core")
 	consultmentors = Mentor.objects.filter(field="Consultancy")
 	analyticmentors = Mentor.objects.filter(field="Analytics")
 	finmentors = Mentor.objects.filter(field="Finance")
@@ -22,10 +23,6 @@ def registrations(request):
 		'mentors_list_cs': csmentor,
 		'mentors_list_other': othermentors
 		}
-    return render(request, 'menteeinfo/register.html')
-
-#Mentee registration
-def register(request):
 	if request.method == 'POST':
 		full_name = request.POST.get('full_name')
 		roll_no = request.POST.get('roll_no')
@@ -39,24 +36,24 @@ def register(request):
 		preference_4 = request.POST.get('preference_4')
 		preference_5 = request.POST.get('preference_5')
 		#for grayout
-		for l in range(1,6):
-			mentor = Mentor.objects.filter(id = '("preference"+str(l))')
-			if(mentor.hits>=3*mentor.no_of_mentees):
-				mentor.gray_out = 0
-				return HttpResponse("Your preference_"+str(l)+ " is not available")
-			else:
-				mentor.hits = mentor.hits+1
+		# for l in range(1,6):
+		# 	mentor = Mentor.objects.filter(id = '("preference"+str(l))')
+		# 	if(mentor.hits>=3*mentor.no_of_mentees):
+		# 		mentor.gray_out = 0
+		# 		return HttpResponse("Your preference_"+str(l)+ " is not available")
+		# 	else:
+		# 		mentor.hits = mentor.hits+1
 
 
-		SOPs = request.POST.get('SOP')
+		SOP = request.POST.get('SOP')
 		mentee = Mentee(full_name = full_name, roll_no = roll_no,
 			department = department, graduation_year = graduation_year,
 			contact_number = contact_number, email_id = email_id,
 			preference_1 = preference_1, preference_2 = preference_2,
 			preference_3 = preference_3, preference_4 = preference_4, 
-			preference_5 = preference_5, SOP = SOPs)
+			preference_5 = preference_5, SOP = SOP)
 		mentee.save()
-	return render(request, "menteeinfo/register.html")
+	return render(request, "menteeinfo/register.html", context)
 
 #sorted mentor display
 # def corementors(request):
