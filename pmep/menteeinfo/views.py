@@ -23,8 +23,11 @@ def register(request):
 		'mentors_list_cs': csmentor,
 		'mentors_list_other': othermentors
 		}
+	return render(request, "menteeinfo/register.html", context)
+
+def menteereg(request):
 	if request.method == 'POST':
-		full_name = request.POST.get('full_name')
+    	full_name = request.POST.get('full_name')
 		roll_no = request.POST.get('roll_no')
 		department = request.POST.get('department')
 		graduation_year = request.POST.get('graduation_year')
@@ -53,43 +56,4 @@ def register(request):
 			preference_3 = preference_3, preference_4 = preference_4, 
 			preference_5 = preference_5, SOP = SOP)
 		mentee.save()
-	return render(request, "menteeinfo/register.html", context)
-
-#sorted mentor display
-# def corementors(request):
-#     allmentors = Mentor.objects.filter(field="Core")
-#     # allmentors_sorted = allmentors.order_by['gray_out']
-#     return render(request, 'menteeinfo/register.html', {'mentors_list_core': allmentors})
-
-# def analyticsmentors(request):
-#     allmentors = Mentor.objects.filter(field="Analytics")
-#     # allmentors_sorted = allmentors.order_by['gray_out']
-#     return render(request, 'menteeinfo/register.html', {'mentors_list_analytics': allmentors})
-
-# def financementors(request):
-#     allmentors = Mentor.objects.filter(field="Finance")
-#     # allmentors_sorted = allmentors.order_by['gray_out']
-#     return render(request, 'menteeinfo/register.html', {'mentors_list_finance': allmentors})
-
-# def csmentors(request):
-#     allmentors = Mentor.objects.filter(field="IT/Software")
-#     # allmentors_sorted = allmentors.order_by['gray_out']
-#     return render(request, 'menteeinfo/register.html', {'mentors_list_cs': allmentors})
-
-# def othermentors(request):
-#     allmentors = Mentor.objects.filter(field="Others")
-#     # allmentors_sorted = allmentors.order_by['gray_out']
-#     return render(request, 'menteeinfo/register.html', {'mentors_list_other': allmentors})
-
-
-#temporary
-# def trmpe(request):
-# 	if request.method == 'POST':
-# 		preference_1 = request.POST.get('preference_1')
-# 		preference_2 = request.POST.get('preference_2')
-# 		preference_3 = request.POST.get('preference_3')
-# 		preference_4 = request.POST.get('preference_4')
-# 		preference_5 = request.POST.get('preference_5')
-# 		assign = temp(preference_1=preference_1, preference_2=preference_2, preference_3=preference_3, preference_4=preference_4, preference_5=preference_5)
-# 		assign.save()
-# 	return HttpResponse('Done')
+	return render(request, 'menteeinfo/register_success.html')
