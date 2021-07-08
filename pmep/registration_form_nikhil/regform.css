@@ -1,3 +1,5 @@
+/*Nikhil Tiwari*/
+
 * {
     margin: 0;
     padding: 0
@@ -275,16 +277,36 @@ p {
     color: black;
     font-size: 125%;
     background: greenyellow;
-    border: 1px solid black;
+    border: 5px solid black;
     text-align: center;
 }
 
 #t05 {
     padding: 20px;
 }
+
+#t06:hover{
+    box-shadow: 8px 8px 5px greenyellow;    
+    transform: scale(1.1);
+}
+
 ul#tabs li {
     display: inline;
 }
 
 /*CARDS*************************************************************************************/
 
+.card-header {
+    color: greenyellow;
+}
+
+.card-title {
+    font-size: 150%;
+    color: white;
+}
+
+.nav-item {
+    border: 30px solid #222629;
+    text-align: center;
+    font-size: 110%;
+}
