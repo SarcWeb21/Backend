@@ -1,4 +1,3 @@
-
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Mentee, Mentor, temp
@@ -6,7 +5,7 @@ from .models import Mentee, Mentor, temp
 def index(request):
 	return render(request, 'menteeinfo/index.html')
 
-#Mentee registration
+# Mentee registration
 def register(request):
 	corementors = Mentor.objects.filter(field="Core")
 	consultmentors = Mentor.objects.filter(field="Consultancy")
@@ -22,12 +21,17 @@ def register(request):
 		'mentors_list_fin': finmentors,
 		'mentors_list_cs': csmentor,
 		'mentors_list_other': othermentors
-		}
+	}
 	return render(request, "menteeinfo/register.html", context)
+# def mentorexp(request):
+#     allmentors = Mentor.objects.all()
+# 	for mentor in allmentors:
+#     	exp = mentor.experience
+
 
 def menteereg(request):
 	if request.method == 'POST':
-    	full_name = request.POST.get('full_name')
+        # full_name = request.POST.get('full_name')
 		roll_no = request.POST.get('roll_no')
 		department = request.POST.get('department')
 		graduation_year = request.POST.get('graduation_year')
@@ -38,15 +42,8 @@ def menteereg(request):
 		preference_3 = request.POST.get('preference_3')
 		preference_4 = request.POST.get('preference_4')
 		preference_5 = request.POST.get('preference_5')
-		#for grayout
-		# for l in range(1,6):
-		# 	mentor = Mentor.objects.filter(id = '("preference"+str(l))')
-		# 	if(mentor.hits>=3*mentor.no_of_mentees):
-		# 		mentor.gray_out = 0
-		# 		return HttpResponse("Your preference_"+str(l)+ " is not available")
-		# 	else:
-		# 		mentor.hits = mentor.hits+1
-
+		full_name = request.POST.get('roll_no')
+		
 
 		SOP = request.POST.get('SOP')
 		mentee = Mentee(full_name = full_name, roll_no = roll_no,
