@@ -308,3 +308,12 @@ ul#tabs li {
     text-align: center;
     font-size: 110%;
 }
+.card-body{
+    height: 367.2px;
+}
+
+@media only screen and (max-width: 1000px){
+    .row{
+        flex-basis: 1;
+    }
+}

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Mentee, Mentor, temp
+from .models import Mentee, Mentor
 # Create your views here.
 def index(request):
 	return render(request, 'menteeinfo/index.html')
@@ -22,6 +22,14 @@ def register(request):
 		'mentors_list_cs': csmentor,
 		'mentors_list_other': othermentors
 	}
+	# dict=[]
+	# allmentors = Mentor.objects.all()
+	# for mentor in allmentors:
+    	
+	# 	exp = mentor.experience
+	# 	explist = exp.split(",")
+	# 	dict[mentor.rollno] = explist
+	# print (dict[183020060])
 	return render(request, "menteeinfo/register.html", context)
 # def mentorexp(request):
 #     allmentors = Mentor.objects.all()
