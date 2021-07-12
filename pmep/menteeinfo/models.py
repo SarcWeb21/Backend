@@ -15,6 +15,8 @@ class Mentee(models.Model):
 	preference_4 = models.CharField(max_length = 10, null=True)
 	preference_5 = models.CharField(max_length = 10, null=True)
 	SOP = models.TextField(null=True)
+    suggestion = models.TextField(null=True)
+    agree= models.CharField(null=True)
     
 #mentor data
 class Mentor(models.Model):

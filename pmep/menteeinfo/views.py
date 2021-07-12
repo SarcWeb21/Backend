@@ -51,7 +51,8 @@ def menteereg(request):
 		preference_4 = request.POST.get('preference_4')
 		preference_5 = request.POST.get('preference_5')
 		full_name = request.POST.get('roll_no')
-		
+		suggestion = request.POST.get('suggestion')
+		agree = request.POST.get('Iagree')		
 
 		SOP = request.POST.get('SOP')
 		mentee = Mentee(full_name = full_name, roll_no = roll_no,
@@ -59,6 +60,6 @@ def menteereg(request):
 			contact_number = contact_number, email_id = email_id,
 			preference_1 = preference_1, preference_2 = preference_2,
 			preference_3 = preference_3, preference_4 = preference_4, 
-			preference_5 = preference_5, SOP = SOP)
+			preference_5 = preference_5, suggestion = suggestion, agree = agree, SOP = SOP)
 		mentee.save()
 	return render(request, 'menteeinfo/register_success.html')
