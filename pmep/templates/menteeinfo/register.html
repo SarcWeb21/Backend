@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-        <link type='text/css' rel="stylesheet" href="{% static 'menteeinfo/regform.css' %}">
+        <link type='text/css' rel="stylesheet" href="{% static 'menteeinfo/random.css' %}">
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script  src="{% static 'menteeinfo/regform.js' %}"></script>
@@ -14,9 +14,9 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
     </head>
 <body>
-    <div class = "container-fluid">
-        <img src="logo.png" align="left" height="100" width="100">
-        <header>PLACEMENT MENTORSHIP PORTAL</header>
+    <div class = "container-fluid px-0">
+        
+        <header>PLACEMENT MENTORING PROGRAMME</header>
     </div>
     <div class="container" id="t01">
         <div class="row justify-content-center">
@@ -31,9 +31,7 @@
                             <li id="personal"><strong>Choose your Mentors</strong></li>
                             <li id="confirm"><strong>Finish</strong></li>
                         </ul>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div> <br> <!-- fieldsets -->
+                        <!-- fieldsets -->
                         <fieldset>
                             <div class="form-card" id="t01">
                                 <div class="row">
@@ -43,7 +41,9 @@
                                     <div class="col-5">
                                         <h2 class="steps">Step 1 - 3</h2>
                                     </div>
-                                </div> <label class="fieldlabels">Name: *</label> <input type="text" name="full_name" placeholder="Your Name" /> <label class="fieldlabels">Roll No. *</label> <input type="text" name="roll_no" placeholder="Your Roll No." /> <label class="fieldlabels">Department *</label>
+                                </div> <label class="fieldlabels">Name: *</label> <input type="text" name="full_name" placeholder="Your Name" id="name"/> 
+                                <label class="fieldlabels">Roll No. *</label> <input type="text" name="roll_no" placeholder="Your Roll No." id="roll_no"/> 
+                                <label class="fieldlabels">Department *</label>
                                 <select class="form-select my-3" aria-label="Department" name='department' id='department'>
                                     <option selected>Department</option>
                                     <option value="Aerospace">Aerospace</option>
@@ -62,8 +62,10 @@
                                     <option value="Mechanical">Mechanical</option>
                                     <option value="Chemistry">Chemistry</option>
                                     <option value="Mathematics">Mathematics</option>
+                                    <option value="Mathematics">Physics/EP</option>
                                 </select>
-                            <!-- <label class="fieldlabels">Degree: *</label>
+                                
+                            <label class="fieldlabels">Degree: *</label>
                             <select class="form-select my-3" aria-label="Department" name='degree' id='department'>
                                 <option selected>Degree</option>
                                 <option value="btech">B.Tech</option>
@@ -71,13 +73,33 @@
                                 <option value="mtech">M.Tech</option>
                                 <option value="msc">M.Sc</option>
                                 <option value="phd">PhD</option>
-                            </select> -->
+                                <option value="other">Other</option>
+                            </select> 
+                            <input type="text" class="form-control" id="degree_other" name="degree_other" placeholder = "Degree (in case of others)" required>
+                             
+                        <label class="fieldlabels">Contact Number*</label>
+                         <input type="text" class="form-control" id="contact" name="contact" placeholder = "Contact Number" required>
+ 
                             <label class="fieldlabels">Email: </label>
-                            <input type="text" name="email_id" placeholder = "Email ID"/>
+                            <input type="text" name="email_id" placeholder = "Email ID" id="email_id"/>
                             <label class="fieldlabels">Statement of Purpose: *</label>
                             <textarea id="t04" name="SOP" rows="10" placeholder="Statement of Purpose"></textarea>
+                            <label class="fieldlabels">Suggestions</label>
+                            <textarea id="suggestion" name="suggestion" rows="10" placeholder="suggestions"></textarea>
+                            <div class="mb-3">
+                              <ul style='color:white;'>
+                                <li>I will support the mentee to the best of my abilities.</li>
+                                <li>I will be responsive to the mentee's doubts and queries.</li>
+                                <li>I will provide adequate feedback to SARC (through feedback forms).</li>
+                              </ul>
+                              
+                             <input class="form-check-input" type="radio" name="Iagree" id="Iagree"  checked>
+                             <label class="form-check-label" for="Iagree" style='color:white; '> I agree</label>
+                             </div>
                             </div>
-                            <input type="button" name="next" class="next action-button" value="Next" />
+
+                            
+                            <input type="button" name="next" class="next action-button" value="Next" id="next_button"/>
                         </fieldset>
                         <fieldset>
                             <div class="form-card" id="t01">
@@ -115,11 +137,11 @@
                                         <div class="tab-pane fade show active" id="core">
                                             <div class="row" id="t05">
                                                 {% for mentor in mentors_list_core %}
-                                                <div class="col-3" id="mentors">
+                                                <div class="col-sm-3" id="mentors">
                                                   <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                                                        <div class="card-header">{{mentor.rollno}}</div>
+                                                        <div class="card-header">Mentor id: {{mentor.id}}</div>
                                                       <div class="card-body" style="height: 367.2px;">
-                                                        <h6 class="degree" style="color: greenyellow;">{{mentor.department}} - {{mentor.graduation_year}}</h4>
+                                                        <h6 class="degree" style="color: #87c240;">{{mentor.department}} - {{mentor.graduation_year}}</h4>
                                                         <h5 class="card-title">{{mentor.workprofile}}</h5>
                                                         <p class="card-text">{{mentor.experience}}</p>
                                                       </div>
@@ -133,11 +155,11 @@
                                     <div class="tab-pane fade" id="consult">
                                       <div class="row" id="t05">
                                         {% for mentor in mentors_list_consult %}
-                                        <div class="col-3" id="mentors">
+                                        <div class="col-sm-3" id="mentors">
                                           <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                                                <div class="card-header">{{mentor.rollno}}</div>
+                                                <div class="card-header">Mentor id: {{mentor.id}}</div>
                                               <div class="card-body" style="height: 367.2px;">
-                                                <h6 class="degree" style="color: greenyellow;">{{mentor.department}} - {{mentor.graduation_year}}</h4>
+                                                <h6 class="degree" style="color: #87c240;">{{mentor.department}} - {{mentor.graduation_year}}</h4>
                                                 <h5 class="card-title">{{mentor.workprofile}}</h5>
                                                 <p class="card-text">{{mentor.experience}}</p>
                                               </div>
@@ -150,11 +172,11 @@
                                     <div class="tab-pane fade" id="analytics">
                                       <div class="row" id="t05">
                                         {% for mentor in mentors_list_analysis %}
-                                        <div class="col-3" id="mentors">
+                                        <div class="col-sm-3" id="mentors">
                                           <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                                                <div class="card-header">{{mentor.rollno}}</div>
+                                                <div class="card-header">Mentor id: {{mentor.id}}</div>
                                               <div class="card-body" style="height: 367.2px;">
-                                                <h6 class="degree" style="color: greenyellow;">{{mentor.department}} - {{mentor.graduation_year}}</h4>
+                                                <h6 class="degree" style="color: #87c240;">{{mentor.department}} - {{mentor.graduation_year}}</h4>
                                                 <h5 class="card-title">{{mentor.workprofile}}</h5>
                                                 <p class="card-text">{{mentor.experience}}</p>
                                               </div>
@@ -167,11 +189,11 @@
                                     <div class="tab-pane fade" id="finance">
                                       <div class="row" id="t05">
                                         {% for mentor in mentors_list_fin %}
-                                        <div class="col-3" id="mentors">
+                                        <div class="col-sm-3" id="mentors">
                                           <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                                                <div class="card-header">{{mentor.rollno}}</div>
+                                                <div class="card-header">Mentor id: {{mentor.id}}</div>
                                               <div class="card-body" style="height: 367.2px;">
-                                                <h6 class="degree" style="color: greenyellow;">{{mentor.department}} - {{mentor.graduation_year}}</h4>
+                                                <h6 class="degree" style="color: #87c240;">{{mentor.department}} - {{mentor.graduation_year}}</h4>
                                                 <h5 class="card-title">{{mentor.workprofile}}</h5>
                                                 <p class="card-text">{{mentor.experience}}</p>
                                               </div>
@@ -184,11 +206,11 @@
                                     <div class="tab-pane fade" id="software">
                                       <div class="row" id="t05">
                                         {% for mentor in mentors_list_cs %}
-                                        <div class="col-3" id="mentors">
+                                        <div class="col-sm-3" id="mentors">
                                           <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                                                <div class="card-header">{{mentor.rollno}}</div>
+                                                <div class="card-header">Mentor id: {{mentor.id}}</div>
                                               <div class="card-body" style="height: 367.2px;">
-                                                <h6 class="degree" style="color: greenyellow;">{{mentor.department}} - {{mentor.graduation_year}}</h4>
+                                                <h6 class="degree" style="color: #87c240;">{{mentor.department}} - {{mentor.graduation_year}}</h4>
                                                 <h5 class="card-title">{{mentor.workprofile}}</h5>
                                                 <p class="card-text">{{mentor.experience}}</p>
                                               </div>
@@ -201,11 +223,11 @@
                                     <div class="tab-pane fade" id="others">
                                       <div class="row" id="t05">
                                         {% for mentor in mentors_list_other %}
-                                        <div class="col-3" id="mentors">
+                                        <div class="col-sm-3" id="mentors">
                                           <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                                                <div class="card-header">{{mentor.rollno}}</div>
+                                                <div class="card-header">Mentor id: {{mentor.id}}</div>
                                               <div class="card-body" style="height: 367.2px;">
-                                                <h6 class="degree" style="color: greenyellow;">{{mentor.department}} - {{mentor.graduation_year}}</h4>
+                                                <h6 class="degree" style="color: #87c240;">{{mentor.department}} - {{mentor.graduation_year}}</h4>
                                                 <h5 class="card-title">{{mentor.workprofile}}</h5>
                                                 <p class="card-text">{{mentor.experience}}</p>
                                               </div>
@@ -218,20 +240,20 @@
                                 </div>
                                 </div>
                                 <label class="fieldlabels">First Preference: </label>
-                            <input type="text" name="preference_1" placeholder="First Preference Mentor's Roll No.">
+                            <input type="text" name="preference_1" placeholder="First Preference Mentor's id">
                             <label class="fieldlabels">Second Preference: </label>
-                            <input type="text" name="preference_2" placeholder="Second Preference Mentor's Roll No.">
+                            <input type="text" name="preference_2" placeholder="Second Preference Mentor's id">
                             <label class="fieldlabels">Third Preference: </label>
-                            <input type="text" name="preference_3" placeholder="Third Preference Mentor's Roll No.">
+                            <input type="text" name="preference_3" placeholder="Third Preference Mentor's id">
                             <label class="fieldlabels">Fourth Preference: </label>
-                            <input type="text" name="preference_4" placeholder="Fourth Preference Mentor's Roll No.">
+                            <input type="text" name="preference_4" placeholder="Fourth Preference Mentor's id">
                             <label class="fieldlabels">Fifth Preference: </label>
-                            <input type="text" name="preference_5" placeholder="Fifth Preference Mentor's Roll No.">
+                            <input type="text" name="preference_5" placeholder="Fifth Preference Mentor's id">
 
                             </div> <button type="submit" name="next" class="next action-button" value="Next">Submit</button> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                         </fieldset>
                        
-                        <fieldset>
+                        {% comment %} <fieldset>
                             <div class="form-card" id="t01">
                                 <div class="row">
                                     <div class="col-7">
@@ -251,7 +273,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </fieldset>
+                        </fieldset> {% endcomment %}
                     </form>
                 </div>
             </div>

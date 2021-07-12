@@ -18,6 +18,7 @@ class Mentee(models.Model):
     
 #mentor data
 class Mentor(models.Model):
+    id = models.AutoField(primary_key=True)
     rollno=models.CharField(max_length=9, null=True)
     department=models.CharField( max_length=255, null=True)
     degree=models.CharField( max_length=255, null=True)

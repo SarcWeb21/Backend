@@ -1,9 +1,10 @@
+{% load static%}
 <html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-        <link type='text/css' rel="stylesheet" href="regform.css">
+        <link type='text/css' rel="stylesheet" href="{% static 'menteeinfo/random.css' %}">
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script  src="regform.js"></script>
@@ -17,7 +18,7 @@
     content: '';
     width: 100%;
     height: 2px;
-    background: greenyellow;
+    background: #87c240;
     position: absolute;
     left: 0;
     top: 25px;
@@ -30,7 +31,7 @@
     display: block;
     font-size: 20px;
     color: #ffffff;
-    background: greenyellow;
+    background: #87c240;
     border-radius: 50%;
     margin: 0 auto 10px auto;
     padding: 2px
@@ -39,8 +40,7 @@
         </style>
     </head>
     <body>
-        <div class = "container-fluid">
-            <img src="logo.png" align="left" height="100" width="100">
+        <div class = "container-fluid px-0">
             <header>PLACEMENT MENTORSHIP PORTAL</header>
         </div>
         <div class="container" id="t01">
@@ -48,17 +48,15 @@
                 <div class="col-11 text-center p-0 mt-3 mb-2">
                     <div class="card px-0 pt-4 pb-0 mt-3 mb-3" id="t01">
                         <h2 id="heading">MENTEE REGISTRATION FORM</h2>
-                        <p>Fill all form field to go to next step</p>
+                        
                         <form id="msform">
                             <!-- progressbar -->
                             <ul id="progressbar">
-                                <li class="active" id="account"><strong>Personal Details</strong></li>
-                                <li id="personal"><strong style="color: greenyellow;">Choose your Mentors</strong></li>
-                                <li id="confirm"><strong style="color: greenyellow;">Finish</strong></li>
+                                <li class="active" id="account"><strong style="color: #87c240;">Personal Details</strong></li>
+                                <li id="personal"><strong style="color: #87c240;">Choose your Mentors</strong></li>
+                                <li id="confirm"><strong style="color: #87c240;">Finish</strong></li>
                             </ul>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div> <br> <!-- fieldsets -->
+                            
                             
 
                             <fieldset>
